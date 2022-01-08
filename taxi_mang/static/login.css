@@ -1,0 +1,66 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    background: url(https://spectrum.ieee.org/media-library/a-group-of-nyc-taxis.jpg?id=25585849&width=1240&height=930) no-repeat;
+    background-size: 1600px 900px;
+    overflow: hidden;
+}
+
+.center {
+    position: absolute;
+    top:20%;
+    left:35%;
+    background:white;
+    width: 350px;
+    height: 450px;
+    border-radius: 10px;
+
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+select {
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+.text_field {
+    padding: 5px;
+}
+
+#login {
+  padding: 5px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+}
+
+.txt_field {
+    padding-left: 20px;
+}
+
+.pass{
+    padding-left:20px ;
+}
+
+.signup_link {
+    padding-left: 20px;
+}
+
+.submit {
+    padding-left: 20px;
+}

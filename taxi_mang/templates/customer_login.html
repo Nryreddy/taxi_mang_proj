@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    customer login
+{% endblock %}
+
+{% block content %}
+
+    <html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>User Login page </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    </head>
+    <body>
+    <div class="center">
+        <h1>Login</h1>
+        <form action="" method="GET">
+            <div class="txt_field">
+                <label>
+                    <input type="text" required name="userid" placeholder="User_id">
+                </label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" required name="f_name" placeholder="First name">
+            </div>
+
+            <div class="txt_field">
+                <input type="text" required name="l_name" placeholder="Last name">
+            </div>
+
+            <div class="txt_field">
+                <input type="number" required name="contact_no" placeholder="Contact Number">
+            </div>
+
+            <div class="txt_field">
+                <input type="text" required name="gender" placeholder="Gender">
+            </div>
+
+            <div class="txt_field">
+                <input type="text" required name="address" placeholder="Address">
+            </div>
+
+            <div class="txt_field">
+                <input type="password" required  placeholder="Password?">
+            </div>
+
+            <div class="pass">Forgot Password?</div>
+
+            <div class="submit">
+                <input id="login" type="submit" value="Login">
+            </div>
+
+            <div class="signup_link">
+                Not a member? <a href="#">Signup</a>
+            </div>
+        </form>
+    </div>
+
+    </body>
+    </html>
+{% endblock %}
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>

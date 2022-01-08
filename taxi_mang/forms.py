@@ -11,5 +11,4 @@ class LoginForm(FlaskForm):
     gender = StringField('Gender', validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-
-    # submit = SubmitField('Sign In')
+    submit = SubmitField('Sign In')

@@ -4,3 +4,6 @@ flask_sqlalchemy
 flask
 mysql-connector
 mysql-connector-python
+flask_login
+mysqlclient
+flask_bcrypt

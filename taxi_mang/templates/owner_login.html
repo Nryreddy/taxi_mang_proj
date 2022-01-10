@@ -6,63 +6,33 @@
 
 {% block content %}
 
+<body class>
+    <div class="container">
+<form method="POST" class="form-signin" style="color:black">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Login
+            </h1>
+            <br>
+             {{ form.user_name(class="form-control", placeholder="Owner Name") }}
 
-    <html lang="en" dir="ltr">
-    <!--
-    <head>
-        <meta charset="utf-8">
-        <title>Admin Login page </title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-    </head>
-    </head>
-    -->
-    <body>
-    <div class="center">
-        <h1>Owner Login</h1>
-        <form action="" method="GET">
-            <div class="txt_field">
-                <input type="text" required name="ownerid" placeholder="Owner_id">
+             {{ form.password(class="form-control", placeholder="Password") }}
+
+            <br>
+
+
+            <div class="checkbox mb-3">
+               <h6>Do not have an account?</h6>
+               <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a>
             </div>
 
-            <div class="txt_field">
-                <input type="text" required name="f_name" placeholder="First name">
-            </div>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
 
-            <div class="txt_field">
-                <input type="text" required name="l_name" placeholder="Lastname">
-            </div>
-
-            <!-- <div class="txt_field">
-              <input type="number" required name="Contact_no" placeholder="Contact Number">
-            </div>
-
-            <div class="txt_field">
-                <input type="text" required name="Gender" placeholder="Gender">
-            </div>
-
-            <div class="txt_field">
-              <input type="text" required name="Address" placeholder="Address">
-            </div>
-              -->
-
-            <div class="txt_field">
-                <input type="password" required  placeholder="Password?">
-            </div>
-
-            <div class="pass">Forgot Password?</div>
-
-            <div class="submit">
-                <input id="login" type="submit" value="Login">
-            </div>
-
-            <div class="signup_link">
-                Not a member? <a href="#">Signup</a>
-            </div>
         </form>
     </div>
+</body>
 
-    </body>
-    </html>
+
 
 {% endblock %}
 

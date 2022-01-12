@@ -5,56 +5,43 @@
 {% endblock %}
 
 {% block content %}
+<html lang="en">
+    <body class>
+        <div class="container">
+            <form action="" method="POST" style="color:black">
+                {{ form.hidden_tag() }}
+            <h1 class="h3 mb-2 font-weight-normal">
+                Please Enter your Details
+            </h1>
+            <br>
 
-    <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>User Login page </title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-    </head>
-    <body>
-    <div class="center">
-        <h1>Login</h1>
-        <form action="" method="GET">
-            <div class="txt_field">
-                <label>
-                    <input type="text" required name="userid" placeholder="User_id">
-                </label>
-            </div>
+            {{ form.customer_id(class="form-control", placeholder="customer id") }}
 
-            <div class="txt_field">
-                <input type="text" required name="f_name" placeholder="First name">
-            </div>
 
-            <div class="txt_field">
-                <input type="text" required name="l_name" placeholder="Last name">
-            </div>
+            {{ form.f_name(class="form-control", placeholder="First Name") }}
 
-            <div class="txt_field">
-                <input type="number" required name="contact_no" placeholder="Contact Number">
-            </div>
 
-            <div class="txt_field">
-                <input type="text" required name="gender" placeholder="Gender">
-            </div>
+            {{ form.l_name(class="form-control", placeholder="Last Name") }}
 
-            <div class="txt_field">
-                <input type="text" required name="address" placeholder="Address">
-            </div>
 
-            <div class="txt_field">
-                <input type="password" required  placeholder="Password?">
-            </div>
+            {{ form.contact_no(class="form-control", placeholder="Contact No") }}
 
-            <div class="pass">Forgot Password?</div>
 
-            <div class="submit">
-                <input id="login" type="submit" value="Login">
-            </div>
+            {{ form.gender(class="form-control", placeholder="Gender") }}
 
-            <div class="signup_link">
-                Not a member? <a href="#">Signup</a>
-            </div>
+
+            {{ form.address(class="form-control", placeholder="Address") }}
+
+
+            <br>
+
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+<!--            <div class="submit">-->
+<!--                 <a class="btn btn-sm btn-secondary" href="{{ url_for('taxi_page') }}">Login</a>-->
+<!--            </div>-->
+
         </form>
     </div>
 

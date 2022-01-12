@@ -8,7 +8,6 @@ body {
     margin: 0;
     background: url(https://spectrum.ieee.org/media-library/a-group-of-nyc-taxis.jpg?id=25585849&width=1240&height=930) no-repeat;
     background-size: 1600px 900px;
-    overflow: hidden;
 }
 
 .center {

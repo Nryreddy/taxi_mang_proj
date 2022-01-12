@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
-from .models import owner,customer
+from .models import owner,customer,driver
 
 
 class CustomerForm(FlaskForm):
@@ -19,6 +19,20 @@ class CustomerForm(FlaskForm):
 
     submit = SubmitField('Sign_In')
 
+class DriverForm(FlaskForm):
+    def validate_customername(self, username_to_check):
+        driverr= driver.query.filter_by(username=username_to_check.data).first()
+        if driverr:
+            raise ValidationError('Username already exists! Please try add full name')
+
+    driver_id = StringField(validators=[DataRequired()])
+    f_name = StringField(validators=[DataRequired()])
+    l_name = StringField(validators=[DataRequired()])
+    contact_no = StringField(validators=[DataRequired()])  # recheck nno
+    gender = StringField(validators=[DataRequired()])
+    address = StringField(validators=[DataRequired()])
+
+    submit = SubmitField('ADD')
 
 class RegisterForm(FlaskForm):
     def validate_username(self, username_to_check):
@@ -35,10 +49,6 @@ class RegisterForm(FlaskForm):
     submit = SubmitField('Create Account')
 
 class ownerForm(FlaskForm):
-    def validate_owername(self, username_to_check):
-        ownerr= owner.query.filter_by(username=username_to_check.data).first()
-        if ownerr:
-            raise ValidationError('Username already exists! Please try add full name')
 
     user_name = StringField(validators=[DataRequired()])
     password = PasswordField(validators=[DataRequired()])

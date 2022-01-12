@@ -3,17 +3,19 @@ from flask_login import UserMixin
 
 
 @login_manager.user_loader
-def load_user(owner_id):
-    return owner.query.get(int(owner_id))
+def load_user(user_id):
+    return owner.query.get(user_id)
 
 
 class customer(db.Model):  # relationship not done yet
     customer_id = db.Column(db.Integer(), primary_key=True)
     f_name = db.Column(db.String(length=50), nullable=False)
     l_name = db.Column(db.String(length=50), nullable=False)
-    contact_no = db.Column(db.Integer(), unique=True, nullable=False)
+    contact_no = db.Column(db.String(length=50), nullable=False)
     gender = db.Column(db.String(length=10), nullable=False)
     address = db.Column(db.String(length=50), nullable=False)
+
+
 
     def __repr__(self):  # magic method
         return f"customer('{self.customer_id}','{self.f_name}','{self.l_name}','{self.contact_no}','{self.gender}','{self.address}')"
@@ -22,7 +24,7 @@ class customer(db.Model):  # relationship not done yet
 class taxi(db.Model):  # relationship not done yet
     taxi_id = db.Column(db.Integer(), primary_key=True)
     taxi_type = db.Column(db.String(length=50), nullable=False)
-    # driver_id =db.Column(db.String(length=50), nullable=False)
+    # driver_id = db.Column(db.String(length=50), nullable=False)
     registration_no = db.Column(db.String(length=50), nullable=False, unique=True)
     status = db.Column(db.String(length=10), nullable=False)
     price_per_km = db.Column(db.String(length=50), nullable=False)
@@ -33,16 +35,19 @@ class taxi(db.Model):  # relationship not done yet
         return f"taxi('{self.taxi_id}','{self.taxi_type}','{self.registration_no}','{self.status}','{self.price_per_km}')"
 
 
-class owner(db.Model,UserMixin):  # relationship not done yet
+class owner(db.Model, UserMixin):  # relationship not done yet
     owner_id = db.Column(db.Integer(), primary_key=True)
     user_name = db.Column(db.String(length=50), nullable=False, unique=True)  # change to owner name ###
-    contact_no = db.Column(db.Integer(), unique=True, nullable=False)
+    contact_no = db.Column(db.String(length=50), unique=True, nullable=False)
     gender = db.Column(db.String(length=10), nullable=False)
     address = db.Column(db.String(length=50), nullable=False)
     password_hash = db.Column(db.String(length=60), nullable=False)
 
     def __repr__(self):  # magic method
         return f"owner('{self.user_name}','{self.contact_no}','{self.gender}','{self.address}')"
+
+    def get_id(self):
+        return (self.owner_id)
 
     @property
     def password(self):
@@ -54,6 +59,21 @@ class owner(db.Model,UserMixin):  # relationship not done yet
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
+
+
+class driver(db.Model):  # relationship not done yet
+    driver_id = db.Column(db.Integer(), primary_key=True)
+    f_name = db.Column(db.String(length=50), nullable=False)
+    l_name = db.Column(db.String(length=50), nullable=False)
+    contact_no = db.Column(db.String(length=50), nullable=False)
+    gender = db.Column(db.String(length=10), nullable=False)
+    address = db.Column(db.String(length=50), nullable=False)
+    # taxi_id = db.Column(db.Integer(),nullable=False)
+
+
+
+    def __repr__(self):  # magic method
+        return f"customer('{self.customer_id}','{self.f_name}','{self.l_name}','{self.contact_no}','{self.gender}','{self.address}')"
 
 # from taxi_mang.models import db
 # db.create_all()

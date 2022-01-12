@@ -1,9 +1,11 @@
 flask_wtf
-wtforms
+wtforms~=3.0.1
 flask_sqlalchemy
-flask
+flask~=2.0.2
 mysql-connector
 mysql-connector-python
 flask_login
 mysqlclient
 flask_bcrypt
+werkzeug~=2.0.2
+bcrypt~=3.2.0

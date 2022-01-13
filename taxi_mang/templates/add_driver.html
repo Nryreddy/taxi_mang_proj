@@ -1,50 +1,47 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    driver
+driver
 {% endblock %}
 
 {% block content %}
+
 <html lang="en">
-    <body class>
-        <div class="container">
-            <form action="" method="POST" style="color:black">
-                {{ form.hidden_tag() }}
-            <h1 class="h3 mb-2 font-weight-normal">
-                Please Enter driver Details
-            </h1>
-            <br>
+<body class>
+<div class="container">
+    <form action="" method="POST" style="color:black">
+        {{ form.hidden_tag() }}
+        <h1 class="h3 mb-2 font-weight-normal">
+            Please Enter driver Details
+        </h1>
+        <br>
 
-            {{ form.driver_id(class="form-control", placeholder="Driver id") }}
-
-
-            {{ form.f_name(class="form-control", placeholder="First Name") }}
+        {{ form.driver_id(class="form-control", placeholder="Driver id") }}
 
 
-            {{ form.l_name(class="form-control", placeholder="Last Name") }}
+        {{ form.f_name(class="form-control", placeholder="First Name") }}
 
 
-            {{ form.contact_no(class="form-control", placeholder="Contact No") }}
+        {{ form.l_name(class="form-control", placeholder="Last Name") }}
 
 
-            {{ form.gender(class="form-control", placeholder="Gender") }}
+        {{ form.contact_no(class="form-control", placeholder="Contact No") }}
 
 
-            {{ form.address(class="form-control", placeholder="Address") }}
+        {{ form.gender(class="form-control", placeholder="Gender") }}
 
 
-            <br>
+        {{ form.address(class="form-control", placeholder="Address") }}
 
 
-            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        <br>
 
-<!--            <div class="submit">-->
-<!--                 <a class="btn btn-sm btn-secondary" href="{{ url_for('taxi_page') }}">Login</a>-->
-<!--            </div>-->
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
 
-        </form>
-    </div>
+    </form>
+</div>
 
-    </body>
-    </html>
+</body>
+</html>
+
 {% endblock %}

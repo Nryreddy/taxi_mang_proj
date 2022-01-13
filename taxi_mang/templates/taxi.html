@@ -1,29 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+Taxi Page
+{% endblock %}
 
-      <table id="dtVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <!-- Your Columns HERE -->
-                <th scope="col">taxi_id</th>
-                <th scope="col">taxi_type</th>
-                <th scope="col">condition</th>
-                <th scope="col">registration_no</th>
-                <th scope="col">price_per_km</th>
-                <th scope="col">book</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Your rows inside the table HERE: -->
-            {% for item in items %}
-                <tr>
-                    <td>{{ item.taxi_id }}</td>
-                    <td>{{ item.taxi_type }}</td>
-                    <td>{{ item.status }}</td>
-                    <td>{{ item.registration_no }}</td>
-                    <td>₹ {{ item.price_per_km }}</td>
-                    <td>
-                        <button class="btn btn-outline btn-success">Book this taxi</button>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+{% block content %}
+<table class="table table-hover table-info">
+    <thead>
+    <tr>
+        <!-- Your Columns HERE -->
+        <th scope="col">Taxi Id</th>
+        <th scope="col">Taxi type</th>
+        <th scope="col">Condition</th>
+        <th scope="col">Registration No</th>
+        <th scope="col">Price per km</th>
+        <th scope="col">Book</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Your rows inside the table HERE: -->
+    {% for item in items %}
+    <tr>
+        <td>{{ item.taxi_id }}</td>
+        <td>{{ item.taxi_type }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.registration_no }}</td>
+        <td>₹ {{ item.price_per_km }}</td>
+        <td>
+            <button class="btn btn-outline btn-success">Book this taxi</button>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

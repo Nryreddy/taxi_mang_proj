@@ -3,7 +3,7 @@ from flask import render_template, redirect, flash, url_for, request
 from taxi_mang.models import taxi, owner, customer, driver
 from taxi_mang.forms import RegisterForm, CustomerForm, ownerForm, DriverForm
 from flask_login import login_user, logout_user, login_required
-from werkzeug.security import check_password_hash
+
 
 
 @app.route('/test')
@@ -59,17 +59,17 @@ def taxi_owner_page():
 
 @app.route('/ownerlogin/listcustomer', methods=['GET', 'POST'])
 def list_customer_page():
-    # items = customer.query.all()
-    return render_template('list_customers.html')
+     items = customer.query.all()
+     return render_template('list_customers.html',items=items)
 
 
 @app.route('/ownerlogin/listdrivers', methods=['GET', 'POST'])
 def list_drivers_page():
-    # items = .query.all()
-    return render_template('list_drivers.html')
+    items = driver.query.all()
+    return render_template('list_drivers.html',items=items)
 
 
-@app.route('/ownerlogin/listdrivers', methods=['GET', 'POST'])
+@app.route('/ownerlogin/listtaxis', methods=['GET', 'POST'])
 def list_taxi_page():
     items = taxi.query.all()
     return render_template('list_taxi.html', items=items)
@@ -99,7 +99,7 @@ def add_drivers_page():
 
 
 @app.route('/user')
-def user_page():
+def user_page():            # ????
     return 'hi user'
 
 

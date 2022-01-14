@@ -21,10 +21,23 @@ class customer(db.Model):  # relationship not done yet
         return f"customer('{self.customer_id}','{self.f_name}','{self.l_name}','{self.contact_no}','{self.gender}','{self.address}')"
 
 
+class bill(db.Model):  # relationship not done yet
+    bill_no = db.Column(db.Integer(), primary_key=True)
+    customer_id = db.Column(db.Integer(), nullable=False)     #fk
+    f_name = db.Column(db.String(length=50), nullable=False)    #fk
+    contact_no = db.Column(db.String(length=50), nullable=False)  #fk
+    taxi_id = db.Column(db.Integer(), nullable=False)  # fk
+    total_amount =db.Column(db.Numeric,nullable=False)
+
+
+    def __repr__(self):  # magic method
+        return f"customer('{self.bill_no}','{self.customer_id}','{self.f_name}','{self.contact_no}','{self.taxi_id}','{self.total_amount}') "
+
+
 class taxi(db.Model):  # relationship not done yet
     taxi_id = db.Column(db.Integer(), primary_key=True)
     taxi_type = db.Column(db.String(length=50), nullable=False)
-    # driver_id = db.Column(db.String(length=50), nullable=False)
+    # driver_id = db.Column(, nullable=False)
     registration_no = db.Column(db.String(length=50), nullable=False, unique=True)
     status = db.Column(db.String(length=10), nullable=False)
     price_per_km = db.Column(db.String(length=50), nullable=False)
@@ -73,7 +86,7 @@ class driver(db.Model):  # relationship not done yet
 
 
     def __repr__(self):  # magic method
-        return f"customer('{self.customer_id}','{self.f_name}','{self.l_name}','{self.contact_no}','{self.gender}','{self.address}')"
+        return f"customer('{self.driver_id}','{self.f_name}','{self.l_name}','{self.contact_no}','{self.gender}','{self.address}')"
 
 # from taxi_mang.models import db
 # db.create_all()

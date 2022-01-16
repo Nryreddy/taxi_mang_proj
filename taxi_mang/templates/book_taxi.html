@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Book Taxi Page
+{% endblock %}
+
+{% block content %}
+
+<h1 class="r" style="color:black">Book Taxi </h1>
+    <div class='r'>
+<!--	<p>Driver Name: {{ dname }}</p>-->
+        <p> Taxi ID : {{ taxi_id }}</p>
+	    <p>Vehicle No: {{ registration_no }}</p>
+	    <p>Taxi Type: {{ taxi_type }}</p>
+	    <p>From: {{ From }}</p>
+	    <p>To: {{ To }}</p>
+
+    </div>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+	<p class="r1">
+            {{ form.yname.label }}<br>
+            {{ form.yname(size=32) }}<br>
+            {% for error in form.yname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+	<p class="r1">
+	    {{ form.Bdate.label }}<br>
+	    {{ form.Bdate(size=32) }}<br>
+	    {% for error in form.Bdate.errors %}
+	    <span style="color: red;">[{{ error }}]</span>
+	    {% endfor %}
+	</p>
+	<p class="r1">
+            {{ form.Btime.label }}<br>
+            {{ form.Btime(size=32) }}<br>
+            {% for error in form.Btime.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p class="r1">{{ form.submit() }}</p>
+    </form>
+{% endblock %}
+

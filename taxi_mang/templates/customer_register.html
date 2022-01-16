@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+  Customer Regisration Page
+{% endblock %}
+
+
+{% block content %}
+<body class>
+    <div class="container">
+        <form method="POST" class="form-register" style="color:black">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-2 font-weight-normal">
+                Please Create your Account (customer)
+            </h1>
+            <br>
+
+            {{ form.customer_name(class="form-control", placeholder="Username") }}
+
+
+            {{ form.contact_no(class="form-control", placeholder="Contact No") }}
+
+
+            {{ form.gender(class="form-control", placeholder="Gender") }}
+
+
+            {{ form.address(class="form-control", placeholder="Address") }}
+
+
+            {{ form.password1(class="form-control", placeholder="Password") }}
+
+
+            {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+
+            <br>
+
+            <div class="checkbox mb-3">
+               <h6>Already have an account?</h6>
+               <a class="btn btn-sm btn-secondary" href="{{ url_for('customer_login_page') }}">Login</a>
+            </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+</body>
+{% endblock %}

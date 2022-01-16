@@ -25,9 +25,9 @@ Taxi Page
         <td>{{ item.status }}</td>
         <td>{{ item.registration_no }}</td>
         <td>₹ {{ item.price_per_km }}</td>
-        <td>
-            <button class="btn btn-outline btn-success">Book this taxi</button>
-        </td>
+
+        <a class="btn btn-info btn-lg" href="{{ url_for('-------') }}" role="button">Book this Taxi</a>
+
     </tr>
     {% endfor %}
     </tbody>

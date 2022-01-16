@@ -10,9 +10,11 @@
                 <!-- Your Columns HERE -->
                 <th scope="col">Taxi Id</th>
                 <th scope="col">Taxi type</th>
-                <th scope="col">Condition</th>
                 <th scope="col">Registration No</th>
-                <th scope="col">Price per km</th>
+<!--            <th scope="col">Price per km</th>-->
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">status</th>
 
             </tr>
         </thead>
@@ -22,10 +24,11 @@
                 <tr>
                     <td>{{ item.taxi_id }}</td>
                     <td>{{ item.taxi_type }}</td>
-                    <td>{{ item.status }}</td>
                     <td>{{ item.registration_no }}</td>
-                    <td>₹ {{ item.price_per_km }}</td>
-
+<!--                <td>₹ {{ item.price_per_km }}</td>-->
+                    <td>{{ item.From }}</td>
+                    <td>{{ item.To }}</td>
+                    <td>{{ item.flag }}</td>
                 </tr>
             {% endfor %}
         </tbody>

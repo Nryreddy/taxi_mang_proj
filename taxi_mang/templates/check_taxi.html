@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+check Taxi Page
+{% endblock %}
+
+{% block content %}
+
+
+<h1 class="wc">Book the taxi here</h1>
+    <table class="table table-hover table-info">
+	    <tr>
+<!--		    <th><b>Driver Name</b></th>-->
+			<th><b>Taxi ID</b></th>
+		    <th><b>Registration No</b></th>
+		    <th><b>Taxi Type</b></th>
+		    <th><b>From</b></th>
+		    <th><b>To</b></th>
+		    <th><b>Book Taxi</b></th>
+	    </tr>
+	    {% for item in results %}
+	    <tr>
+<!--		<td>{{ item.dname }}</td>-->
+			<td>{{ item.taxi_id }}</td>
+		    <td>{{ item.registration_no }}</td>
+		    <td>{{ item.taxi_type }}</td>
+		    <td>{{ item.From }}</td>
+		    <td>{{ item.To }}</td>
+
+		    <td><a class="btn btn-info btn-lg" href="{{ url_for('booktaxi', taxi_id=item.taxi_id, registration_no=item.registration_no, taxi_type=item.taxi_type, From=item.From, To=item.To) }}" role="button">Book</a></td>
+
+        </tr>
+	    {% endfor %}
+    </table>
+
+{% endblock %}
+

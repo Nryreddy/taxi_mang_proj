@@ -10,7 +10,7 @@ class RegisterForm(FlaskForm):
         if ownerr:
             raise ValidationError('Username already exists! Please try a different username')
 
-    user_name = StringField('User Name', validators=[DataRequired()])
+    owner_name = StringField('User Name', validators=[DataRequired()])
     contact_no = StringField(validators=[DataRequired()])
     gender = StringField(validators=[DataRequired()])
     address = StringField(validators=[DataRequired()])
@@ -20,7 +20,7 @@ class RegisterForm(FlaskForm):
 
 
 class ownerForm(FlaskForm):
-    user_name = StringField(validators=[DataRequired()])
+    owner_name = StringField(validators=[DataRequired()])
     password = PasswordField(validators=[DataRequired()])
     submit = SubmitField('Sign_In')
 
@@ -55,6 +55,17 @@ class DriverForm(FlaskForm):
 
     submit = SubmitField('ADD')
 
+
+class addTaxiForm(FlaskForm):
+    # driver_id = StringField(validators=[DataRequired()])
+    taxi_type = StringField(validators=[DataRequired()])
+    registration_no = StringField(validators=[DataRequired()])
+    From = StringField(validators=[DataRequired()])
+    To = StringField(validators=[DataRequired()])
+    #flag = BooleanField(validators=[DataRequired()])
+    #driver_name = StringField('Driver Name',validators=[DataRequired()])
+
+    submit = SubmitField('ADD')
 
 class selectTaxiForm(FlaskForm):
     driver_name = StringField('Driver Name', validators=[DataRequired()])

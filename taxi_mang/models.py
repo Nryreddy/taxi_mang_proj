@@ -3,12 +3,12 @@ from flask_login import UserMixin
 
 
 @login_manager.user_loader
-def load_user_owner(user_id):
+def user_loader1(user_id):
     return owner.query.get(user_id)
 
 
 @login_manager.user_loader
-def load_user_customer(customer_id):
+def user_loader2(customer_id):
     return customer.query.get(customer_id)
 
 
@@ -60,24 +60,24 @@ class taxi(db.Model):  # relationship not done yet
     To = db.Column(db.String(50), nullable=False)
     flag = db.Column(db.Integer)
     # driver_id = db.Column(db.Integer(), db.ForeignKey('driver.driver_id'))
-    # owner_id = db.Column(db.Integer, db.ForeignKey('owner.owner_id'))
+    owner_owner_id = db.Column(db.Integer, db.ForeignKey('owner.owner_id'))
     # bookedtaxiiiii = db.relationship('bookedtaxi', backref='taxi', lazy=True)
 
 
     # foreign_key driver_id
 
     def __repr__(self):  # magic method
-        return f"taxi('{self.taxi_id}','{self.taxi_type}','{self.registration_no}','{self.From}','{self.To}','{self.flag}')"
+        return f"taxi('{self.taxi_id}','{self.taxi_type}','{self.registration_no}','{self.From}','{self.To}','{self.flag},'{self.owner_owner_id}')"
 
 
 class owner(db.Model, UserMixin):  # relationship not done yet
     owner_id = db.Column(db.Integer(), primary_key=True)
-    user_name = db.Column(db.String(length=50), nullable=False, unique=True)  # change to owner name ###
+    owner_name = db.Column(db.String(length=50), nullable=False, unique=True)  # change to owner name ###
     contact_no = db.Column(db.String(length=50), unique=True, nullable=False)
     gender = db.Column(db.String(length=50), nullable=False)
     address = db.Column(db.String(length=50), nullable=False)
     password_hash = db.Column(db.String(length=60), nullable=False)
-    # taxiii = db.relationship('taxi', backref='owner', lazy=True)
+    taxiii = db.relationship('taxi', backref='owner', lazy=True)
 
     def __repr__(self):  # magic method
         return f"owner('{self.user_name}','{self.contact_no}','{self.gender}','{self.address}')"
@@ -125,7 +125,7 @@ class bookedtaxi(UserMixin, db.Model):
     # driver_id = db.Column(db.Integer(), db.ForeignKey('driver.driver_id'))
 
     def __repr__(self):
-        return '<BookCab {}>'.format(self.dname)
+        return '<booktaxi{}>'.format(self.dname)
 
 # from taxi_mang.models import db
 # db.create_all()

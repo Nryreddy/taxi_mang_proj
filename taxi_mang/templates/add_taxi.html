@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+ AddTaxi Page
+{% endblock %}
+
+{% block content %}
+
+<html lang="en">
+<body class>
+<div class="container">
+    <form action="" method="POST" style="color:black">
+        {{ form.hidden_tag() }}
+        <h1 class="h3 mb-2 font-weight-normal">
+            Please Enter Taxi Details
+        </h1>
+        <br>
+
+        {{ form.registration_no(class="form-control", placeholder="Registration No") }}
+
+
+        {{ form.taxi_type(class="form-control", placeholder="Taxi Type") }}
+
+
+        {{ form.From(class="form-control", placeholder="From") }}
+
+
+        {{ form.To(class="form-control", placeholder="To") }}
+
+
+
+        <br>
+
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+    </form>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

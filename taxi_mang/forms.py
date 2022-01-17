@@ -47,7 +47,7 @@ class CustomerForm(FlaskForm):
 
 
 class DriverForm(FlaskForm):
-    driver_id = StringField(validators=[DataRequired()])
+    # driver_id = StringField(validators=[DataRequired()])
     driver_name = StringField(validators=[DataRequired()])
     contact_no = StringField(validators=[DataRequired()])
     gender = StringField(validators=[DataRequired()])

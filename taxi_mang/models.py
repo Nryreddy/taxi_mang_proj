@@ -42,9 +42,9 @@ class customer(db.Model,UserMixin):  # relationship not done yet
 
 # class bill(db.Model):  # relationship not done yet
 #     bill_no = db.Column(db.Integer(), primary_key=True)
-#     customer_id = db.Column(db.Integer(), nullable=False)  # fk
-#     f_name = db.Column(db.String(length=50), nullable=False)  # fk
-#     contact_no = db.Column(db.String(length=50), nullable=False)  # fk
+#     customer_id = db.Column(db.Integer(), nullable=False)  # fk  #####
+#     f_name = db.Column(db.String(length=50), nullable=False)  # fk    ######
+#     contact_no = db.Column(db.String(length=50), nullable=False)  # fk     ######
 #     taxi_id = db.Column(db.Integer(), nullable=False)  # fk
 #     total_amount = db.Column(db.Numeric, nullable=False)
 #

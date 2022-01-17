@@ -78,22 +78,24 @@ def list_taxi_page():
     items = taxi.query.all()
     return render_template('list_taxi.html', items=items)
 
+@app.route('/ownerlogin/listbookedtaxis', methods=['GET', 'POST'])
+def list_booked_taxi_page():
+    items = bookedtaxi.query.all()
+    return render_template('list_booked_taxi.html', items=items)
 
 @app.route('/ownerlogin/adddriver', methods=['GET', 'POST'])
 def add_drivers_page():
     form = DriverForm()
 
     if form.validate_on_submit():
-        driver_to_create = driver(driver_id=form.driver_id.data,
-                                  f_name=form.f_name.data,
-                                  l_name=form.l_name.data,
+        driver_to_create = driver(driver_name=form.driver_name.data,
                                   contact_no=form.contact_no.data,
                                   gender=form.gender.data,
                                   address=form.address.data, )
         db.session.add(driver_to_create)
         db.session.commit()
-        flash(f'Successfully added driver: {form.f_name.data} {form.l_name.data}', category='success')
-        return redirect(url_for('owner_page'))
+        flash(f'Successfully added driver: {form.driver_name.data}', category='success')
+        return redirect(url_for('owner_home'))
 
     if form.errors != {}:  # If there are not errors from the validations
         for err_msg in form.errors.values():

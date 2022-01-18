@@ -15,7 +15,6 @@ def home_page():
 @app.route('/owner_register', methods=['GET', 'POST'])
 def owner_register_page():
     form = RegisterForm()
-
     if form.validate_on_submit():
         owner_to_create = owner(owner_name=form.owner_name.data,
                                 contact_no=form.contact_no.data,
@@ -26,10 +25,9 @@ def owner_register_page():
         db.session.commit()
         return redirect(url_for('owner_login_page'))
 
-    if form.errors != {}:  # If there are not errors from the validations
+    if form.errors != {}:  # If there are no errors from the validations
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
-
     return render_template('owner_register.html', form=form)
 
 
@@ -57,12 +55,6 @@ def owner_home(owner_id):
     return render_template('owner_home.html', owner_id=owner_id)
 
 
-@app.route('/ownerlogin/taxi', methods=['GET', 'POST'])
-def taxi_owner_page():
-    items = taxi.query.all()
-    return render_template('add_taxi.html', items=items)
-
-
 @app.route('/ownerlogin/listcustomer', methods=['GET', 'POST'])
 def list_customer_page():
     items = customer.query.all()
@@ -87,10 +79,9 @@ def list_booked_taxi_page():
     return render_template('list_booked_taxi.html', items=items)
 
 
-@app.route('/ownerlogin/adddriver', methods=['GET', 'POST'])
-def add_drivers_page():
+@app.route('/ownerlogin/adddriver/<owner_id>', methods=['GET', 'POST'])
+def add_drivers_page(owner_id):
     form = DriverForm()
-
     if form.validate_on_submit():
         driver_to_create = driver(driver_name=form.driver_name.data,
                                   contact_no=form.contact_no.data,
@@ -99,9 +90,9 @@ def add_drivers_page():
         db.session.add(driver_to_create)
         db.session.commit()
         flash(f'Successfully added driver: {form.driver_name.data}', category='success')
-        return redirect(url_for('owner_home'))
+        return redirect(url_for('owner_home', owner_id=owner_id))
 
-    if form.errors != {}:  # If there are not errors from the validations
+    if form.errors != {}:  # If there are no errors from the validations
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
@@ -114,7 +105,7 @@ def add_taxi_page(owner_id):
     if form.validate_on_submit():
         taxii = taxi(registration_no=form.registration_no.data,
                      taxi_type=form.taxi_type.data, From=form.From.data, To=form.To.data,
-                     flag=0, owner_owner_id=owner_id)  # ??????
+                     flag=0, owner_owner_id=owner_id)
         db.session.add(taxii)
         db.session.commit()
         flash('The details of the Taxi has been added successfully!', category='success')
@@ -125,7 +116,6 @@ def add_taxi_page(owner_id):
 @app.route('/customer_register', methods=['GET', 'POST'])
 def customer_register_page():
     form = CustomerRegisterForm()
-
     if form.validate_on_submit():
         customer_to_create = customer(customer_name=form.customer_name.data,
                                       contact_no=form.contact_no.data,
@@ -136,7 +126,7 @@ def customer_register_page():
         db.session.commit()
         return redirect(url_for('customer_login_page'))
 
-    if form.errors != {}:  # If there are not errors from the validations
+    if form.errors != {}:  # If there are no errors from the validations
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
@@ -146,16 +136,12 @@ def customer_register_page():
 @app.route('/customerlogin', methods=['GET', 'POST'])
 def customer_login_page():
     form = CustomerForm()
-
     if form.validate_on_submit():
         attempted_customer = customer.query.filter_by(customer_name=form.customer_name.data).first()
         customer_id = attempted_customer.customer_id
         if attempted_customer and attempted_customer.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_customer)
-            flash(
-                f'Successfully logged in as: {attempted_customer.customer_name} (id-{attempted_customer.customer_id})',
-                category='success')
-
+            flash(f'Successfully logged in as: {attempted_customer.customer_name} (id-{attempted_customer.customer_id})',category='success')
             return redirect(url_for('customer_home', customer_id=customer_id))
         else:
             flash('Username and password are not match! Please try again', category='danger')
@@ -165,14 +151,11 @@ def customer_login_page():
 
 @app.route('/customerlogin/customer_home/<customer_id>', methods=['GET', 'POST'])
 def customer_home(customer_id):
-    flash(f'Successfully logged in as: ({customer_id})', category='success')
     return render_template('customer_home.html', customer_id=customer_id)
 
 
 @app.route('/customerlogin/customer_home/check/<customer_id>', methods=['GET', 'POST'])
 def check_taxi(customer_id):
-    flash(f'Successfully logged in as: (-{customer_id})', category='success')
-
     taxii = taxi.query.filter_by(flag=0).all()
     results = [
         {"taxi_id": one.taxi_id,
@@ -188,8 +171,6 @@ def check_taxi(customer_id):
     '/customerlogin/customer_home/check/booktaxi/<customer_id>/<taxi_id>/<registration_no>/<taxi_type>/<From>/<To>',
     methods=['GET', 'POST'])
 def booktaxi(customer_id, taxi_id, registration_no, taxi_type, From, To):
-    flash(f'Successfully logged in as: ({customer_id})', category='success')
-
     form = BookTaxiForm()
     if form.validate_on_submit():
         obj = taxi.query.filter_by(registration_no=registration_no).first()

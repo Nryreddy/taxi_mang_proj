@@ -5,7 +5,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:5500@localhost/taxi_management_db'
-app.config['SECRET_KEY'] = 'd3074feb89d17432bf49c34a'  # >>> import os    >>> os.urandom(12).hex()
+app.config['SECRET_KEY'] = 'd3074feb89d17432bf49c34a'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)

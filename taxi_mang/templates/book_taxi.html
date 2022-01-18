@@ -6,40 +6,37 @@ Book Taxi Page
 
 {% block content %}
 
+<html lang="en">
+<body class>
 <h1 class="r" style="color:black">Book Taxi </h1>
-    <div class='r'>
-<!--	<p>Driver Name: {{ dname }}</p>-->
-        <p> Taxi ID : {{ taxi_id }}</p>
-	    <p>Vehicle No: {{ registration_no }}</p>
-	    <p>Taxi Type: {{ taxi_type }}</p>
-	    <p>From: {{ From }}</p>
-	    <p>To: {{ To }}</p>
+<div class="container">
+    <!--<p>Driver Name: {{ dname }}</p>-->
+    <p> Taxi ID : {{ taxi_id }}</p>
+    <p>Vehicle No: {{ registration_no }}</p>
+    <p>Taxi Type: {{ taxi_type }}</p>
+    <p>From: {{ From }}</p>
+    <p>To: {{ To }}</p>
+    <p>Customer Id: {{ customer_id }}</p>
 
-    </div>
-    <form action="" method="post">
+    <form action="" method="POST" >
         {{ form.hidden_tag() }}
-	<p class="r1">
-            {{ form.yname.label }}<br>
-            {{ form.yname(size=32) }}<br>
-            {% for error in form.yname.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-	<p class="r1">
-	    {{ form.Bdate.label }}<br>
-	    {{ form.Bdate(size=32) }}<br>
-	    {% for error in form.Bdate.errors %}
-	    <span style="color: red;">[{{ error }}]</span>
-	    {% endfor %}
-	</p>
-	<p class="r1">
-            {{ form.Btime.label }}<br>
-            {{ form.Btime(size=32) }}<br>
-            {% for error in form.Btime.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p class="r1">{{ form.submit() }}</p>
-    </form>
-{% endblock %}
+        <br>
 
+        {{ form.yname(class="form-control", placeholder="Customer Name") }}
+
+
+        {{ form.Bdate(class="form-control", placeholder="Booking Date") }}
+
+
+        {{ form.Btime(class="form-control", placeholder="Booking Time") }}
+
+        <br>
+
+        {{ form.submit(class="btn btn-primary btn-lg active") }}
+    </form>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

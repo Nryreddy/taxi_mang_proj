@@ -9,12 +9,13 @@
             <tr>
                 <!-- Your Columns HERE -->
                 <th scope="col">BTaxi_Id</th>
-                <th scope="col">Taxi type</th>
                 <th scope="col">Registration No</th>
-<!--            <th scope="col">Price per km</th>-->
+                <th scope="col">Taxi Type</th>
+                <th scope="col">Taxi Id</th>
+                <th scope="col">Customer Id</th>
+                <th scope="col">Customer Name</th>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
-                <th scope="col">Customer Name</th>
                 <th scope="col">Booking Date</th>
                 <th scope="col">Booking Time</th>
 
@@ -25,12 +26,13 @@
             {% for item in items %}
                 <tr>
                     <td>{{ item.id }}</td>
-                    <td>{{ item.taxi_type }}</td>
                     <td>{{ item.registration_no }}</td>
-<!--                <td>₹ {{ item.price_per_km }}</td>-->
+                    <td>{{ item.taxi_type }}</td>
+                    <td>{{ item.taxi_taxi_id }}</td>
+                    <td>{{ item.customer_customer_id }}</td>
+                    <td>{{ item.yname }}</td>
                     <td>{{ item.From }}</td>
                     <td>{{ item.To }}</td>
-                    <td>{{ item.yname }}</td>
                     <td>{{ item.Bdate }}</td>
                     <td>{{ item.Btime }}</td>
                 </tr>

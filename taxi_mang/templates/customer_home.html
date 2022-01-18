@@ -11,7 +11,7 @@ customer home page
         <h1 class="p-3 mb-2 bg-info text-white" >WELCOME </h1>
     </div>
 </div>
-<a class="btn btn-info btn-lg" href="{{ url_for('check_taxi') }}" role="button">Book Taxi</a>
+<a class="btn btn-info btn-lg" href="{{ url_for('check_taxi',customer_id=customer_id) }}" role="button">Book Taxi</a>
 
 
 {% endblock %}

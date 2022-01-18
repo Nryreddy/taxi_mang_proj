@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
-from .models import owner, customer, driver
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import ValidationError, DataRequired, EqualTo, Length
+from .models import owner, customer
 
 
 class RegisterForm(FlaskForm):
@@ -9,7 +9,6 @@ class RegisterForm(FlaskForm):
         ownerr = owner.query.filter_by(username=username_to_check.data).first()
         if ownerr:
             raise ValidationError('Username already exists! Please try a different username')
-
     owner_name = StringField('User Name', validators=[DataRequired()])
     contact_no = StringField(validators=[DataRequired()])
     gender = StringField(validators=[DataRequired()])
@@ -30,7 +29,6 @@ class CustomerRegisterForm(FlaskForm):
         customerr = customer.query.filter_by(customer_name=customername_to_check.data).first()
         if customerr:
             raise ValidationError('Username already exists! Please try add full name')
-
     customer_name = StringField(validators=[DataRequired()])
     contact_no = StringField(validators=[DataRequired()])
     gender = StringField(validators=[DataRequired()])
@@ -47,12 +45,10 @@ class CustomerForm(FlaskForm):
 
 
 class DriverForm(FlaskForm):
-    # driver_id = StringField(validators=[DataRequired()])
     driver_name = StringField(validators=[DataRequired()])
     contact_no = StringField(validators=[DataRequired()])
     gender = StringField(validators=[DataRequired()])
     address = StringField(validators=[DataRequired()])
-
     submit = SubmitField('ADD')
 
 
@@ -62,18 +58,7 @@ class addTaxiForm(FlaskForm):
     registration_no = StringField(validators=[DataRequired()])
     From = StringField(validators=[DataRequired()])
     To = StringField(validators=[DataRequired()])
-    #flag = BooleanField(validators=[DataRequired()])
-    #driver_name = StringField('Driver Name',validators=[DataRequired()])
-
     submit = SubmitField('ADD')
-
-class selectTaxiForm(FlaskForm):
-    driver_name = StringField('Driver Name', validators=[DataRequired()])
-    registration_no = StringField('Vehicle Number', validators=[DataRequired()])
-    taxi_type = StringField('Vehicle Type', validators=[DataRequired()])
-    From = StringField('From', validators=[DataRequired()])
-    To = StringField('To', validators=[DataRequired()])
-    submit = SubmitField('Add')
 
 
 class BookTaxiForm(FlaskForm):

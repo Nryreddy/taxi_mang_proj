@@ -31,7 +31,6 @@
         </ul>
 
         {% if current_user.is_authenticated %}
-          Hi {{ current_user.owner_name }}!
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('logout_page') }}">Logout</a>

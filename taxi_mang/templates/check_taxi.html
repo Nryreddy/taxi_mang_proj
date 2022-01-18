@@ -27,7 +27,7 @@ check Taxi Page
 		    <td>{{ item.From }}</td>
 		    <td>{{ item.To }}</td>
 
-		    <td><a class="btn btn-info btn-lg" href="{{ url_for('booktaxi', taxi_id=item.taxi_id, registration_no=item.registration_no, taxi_type=item.taxi_type, From=item.From, To=item.To) }}" role="button">Book</a></td>
+		    <td><a class="btn btn-info btn-lg" href="{{ url_for('booktaxi',customer_id=customer_id,taxi_id=item.taxi_id, registration_no=item.registration_no, taxi_type=item.taxi_type, From=item.From, To=item.To) }}" role="button">Book</a></td>
 
         </tr>
 	    {% endfor %}

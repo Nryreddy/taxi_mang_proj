@@ -13,8 +13,8 @@
         <h1 class="p-3 mb-2 bg-info text-white">
             Please Enter Taxi Details
         </h1>
-        <br>
 
+        <div class="container">
         {{ form.registration_no(class="form-control", placeholder="Registration No") }}
 
 
@@ -25,28 +25,19 @@
 
 
         {{ form.To(class="form-control", placeholder="To") }}
-
-        <h2 class="btn btn-secondary btn-lg">Select Driver</h2>
-        <label >
-            <select name="Driver ID">
-
-                {% for each in drivers %}
-
-                <option value="{{each}}">{{each.driver_name}}</option>
-
-                {% endfor %}
-
-            </select>
-        </label>
-
-
         <br>
-
         {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
-
+        <br>
+</div>
     </form>
 </div>
+        <br>
+<div class="container">
+        <form class="d-block p-2 bg-secondary text-white">
+            Driver Name : {{ driver_name}}
+        </form>
 
+</div>
 </body>
 </html>
 

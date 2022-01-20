@@ -54,11 +54,11 @@ class DriverForm(FlaskForm):
 
 
 class addTaxiForm(FlaskForm):
-    # driver_id = StringField(validators=[DataRequired()])
     taxi_type = StringField(validators=[DataRequired()])
     registration_no = StringField(validators=[DataRequired()])
     From = StringField(validators=[DataRequired()])
     To = StringField(validators=[DataRequired()])
+
     submit = SubmitField('ADD')
 
 

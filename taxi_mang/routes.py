@@ -6,7 +6,6 @@ from taxi_mang.forms import RegisterForm, CustomerForm, ownerForm, DriverForm, B
 from flask_login import login_user, logout_user
 
 
-
 @app.route('/')
 @app.route('/home')
 def home_page():
@@ -90,8 +89,9 @@ def add_drivers_page(owner_id):
                                   address=form.address.data, )
         db.session.add(driver_to_create)
         db.session.commit()
+        driver_name = form.driver_name.data
         flash(f'Successfully added driver: {form.driver_name.data}', category='success')
-        return redirect(url_for('owner_home', owner_id=owner_id))
+        return redirect(url_for('add_taxi_page', owner_id=owner_id, driver_name=driver_name))
 
     if form.errors != {}:  # If there are no errors from the validations
         for err_msg in form.errors.values():
@@ -100,19 +100,22 @@ def add_drivers_page(owner_id):
     return render_template('add_driver.html', form=form)
 
 
-@app.route('/ownerlogin/addtaxi/<owner_id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
-def add_taxi_page(owner_id):
+@app.route('/ownerlogin/adddriver/addtaxi/<owner_id>/<driver_name>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def add_taxi_page(owner_id, driver_name):
     form = addTaxiForm()
     if form.validate_on_submit():
-        drivers = driver.query.filter_by(driver_name=driver.driver_name).all()
         taxii = taxi(registration_no=form.registration_no.data,
                      taxi_type=form.taxi_type.data, From=form.From.data, To=form.To.data,
-                     flag=0, owner_owner_name=owner_id,driver_driver_name=drivers.driver_name)
+                     flag=0, owner_owner_id=owner_id, driver_driver_name=driver_name)
         db.session.add(taxii)
         db.session.commit()
         flash('The details of the Taxi has been added successfully!', category='success')
         return redirect(url_for('owner_home', owner_id=owner_id))
-    return render_template('add_taxi.html', form=form)
+    if form.errors != {}:  # If there are no errors from the validations
+        for err_msg in form.errors.values():
+            flash(f'There was an error with creating a user: {err_msg}', category='danger')
+
+    return render_template('add_taxi.html', form=form,driver_name=driver_name)
 
 
 @app.route('/customer_register', methods=['GET', 'POST'])

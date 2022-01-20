@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from sqlalchemy import Integer
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, EqualTo, Length
 from .models import owner, customer

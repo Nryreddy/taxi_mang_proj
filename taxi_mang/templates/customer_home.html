@@ -10,8 +10,21 @@ customer home page
     <div class="content">
         <h1 class="p-3 mb-2 bg-info text-white" >WELCOME </h1>
     </div>
+
+    <div class="hi">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('check_taxi',customer_id=customer_id) }}" role="button">Book Taxi</a>
+    </div>
+    <style>
+        .hi {
+            text-align: center;
+            padding: 80px;
+            font-size: 100px;
+        }
+    body {
+        background: url(https://cherrytaxiservice.com/wp-content/uploads/2017/07/Taxi.jpg)no-repeat;
+        background-size: 1600px 900px;
+    }
+    </style>
+
 </div>
-<a class="btn btn-info btn-lg" href="{{ url_for('check_taxi',customer_id=customer_id) }}" role="button">Book Taxi</a>
-
-
 {% endblock %}

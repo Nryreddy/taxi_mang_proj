@@ -12,7 +12,7 @@ def user_loader2(customer_id):
     return customer.query.get(customer_id)
 
 
-class customer(db.Model, UserMixin):  # relationship not done yet
+class customer(db.Model, UserMixin):
     customer_id = db.Column(db.Integer(), primary_key=True)
     customer_name = db.Column(db.String(length=50), nullable=False, unique=True)
     contact_no = db.Column(db.String(length=50), nullable=False)
@@ -46,7 +46,7 @@ class taxi(db.Model):  # relationship not done yet
     From = db.Column(db.String(50), nullable=False)
     To = db.Column(db.String(50), nullable=False)
     flag = db.Column(db.Integer)
-    # driver_id = db.Column(db.Integer(), db.ForeignKey('driver.driver_id'))
+    driver_driver_name = db.Column(db.String(50),db.ForeignKey('driver.driver_name'))
     owner_owner_id = db.Column(db.Integer, db.ForeignKey('owner.owner_id'))
     bookedtaxiii = db.relationship('bookedtaxi', backref='taxi', lazy=True)
 
@@ -87,12 +87,10 @@ class driver(db.Model):  # relationship not done yet
     contact_no = db.Column(db.String(length=50), nullable=False)
     gender = db.Column(db.String(length=10), nullable=False)
     address = db.Column(db.String(length=50), nullable=False)
-
-    # taxiiii = db.relationship('taxi', backref='driver', lazy=True)
-    # bookedtaxiiii= db.relationship('bookedtaxi', backref='driver', lazy=True)
+    taxiiii = db.relationship('taxi', backref='driver', lazy=True)
 
     def __repr__(self):  # magic method
-        return f"customer('{self.driver_id}','{self.f_name}','{self.l_name}','{self.contact_no}','{self.gender}','{self.address}')"
+        return f"driver('{self.driver_id}','{self.driver_name}','{self.contact_no}','{self.gender}','{self.address}')"
 
 
 class bookedtaxi(UserMixin, db.Model):

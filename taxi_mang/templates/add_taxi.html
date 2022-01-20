@@ -10,7 +10,7 @@
 <div class="container">
     <form action="" method="POST" style="color:black">
         {{ form.hidden_tag() }}
-        <h1 class="h3 mb-2 font-weight-normal">
+        <h1 class="p-3 mb-2 bg-info text-white">
             Please Enter Taxi Details
         </h1>
         <br>
@@ -26,6 +26,18 @@
 
         {{ form.To(class="form-control", placeholder="To") }}
 
+        <h2 class="btn btn-secondary btn-lg">Select Driver</h2>
+        <label >
+            <select name="Driver ID">
+
+                {% for each in drivers %}
+
+                <option value="{{each}}">{{each.driver_name}}</option>
+
+                {% endfor %}
+
+            </select>
+        </label>
 
 
         <br>

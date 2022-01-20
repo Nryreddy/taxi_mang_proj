@@ -6,6 +6,7 @@ from taxi_mang.forms import RegisterForm, CustomerForm, ownerForm, DriverForm, B
 from flask_login import login_user, logout_user
 
 
+
 @app.route('/')
 @app.route('/home')
 def home_page():
@@ -36,16 +37,16 @@ def owner_login_page():
     form = ownerForm()
     if form.validate_on_submit():
         attempted_user = owner.query.filter_by(owner_name=form.owner_name.data).first()
-        owner_id = attempted_user.owner_id
         # owner_id = owner.query(owner.owner_id).filter_by(owner.owner_name == attempted_user.owner_id).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
+            owner_id = attempted_user.owner_id
             flash(f'Successfully logged in as: {attempted_user.owner_name} (id-{attempted_user.owner_id})',
                   category='success')
 
             return redirect(url_for('owner_home', owner_id=owner_id))
         else:
-            flash('Username and password are not match! Please try again', category='danger')
+            flash("Username and password don't match! Please try again", category='danger')
 
     return render_template('owner_login.html', form=form)
 
@@ -103,9 +104,10 @@ def add_drivers_page(owner_id):
 def add_taxi_page(owner_id):
     form = addTaxiForm()
     if form.validate_on_submit():
+        drivers = driver.query.filter_by(driver_name=driver.driver_name).all()
         taxii = taxi(registration_no=form.registration_no.data,
                      taxi_type=form.taxi_type.data, From=form.From.data, To=form.To.data,
-                     flag=0, owner_owner_id=owner_id)
+                     flag=0, owner_owner_name=owner_id,driver_driver_name=drivers.driver_name)
         db.session.add(taxii)
         db.session.commit()
         flash('The details of the Taxi has been added successfully!', category='success')
@@ -141,7 +143,9 @@ def customer_login_page():
         customer_id = attempted_customer.customer_id
         if attempted_customer and attempted_customer.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_customer)
-            flash(f'Successfully logged in as: {attempted_customer.customer_name} (id-{attempted_customer.customer_id})',category='success')
+            flash(
+                f'Successfully logged in as: {attempted_customer.customer_name} (id-{attempted_customer.customer_id})',
+                category='success')
             return redirect(url_for('customer_home', customer_id=customer_id))
         else:
             flash('Username and password are not match! Please try again', category='danger')

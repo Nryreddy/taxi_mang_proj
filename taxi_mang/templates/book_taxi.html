@@ -8,16 +8,21 @@ Book Taxi Page
 
 <html lang="en">
 <body class>
-<h1 class="r" style="color:black">Book Taxi </h1>
 <div class="container">
+    <div class="content">
+        <h1 class="p-3 mb-2 bg-info text-white" >Book Taxi</h1>
+    </div>
     <!--<p>Driver Name: {{ dname }}</p>-->
-    <p> Taxi ID : {{ taxi_id }}</p>
-    <p>Vehicle No: {{ registration_no }}</p>
-    <p>Taxi Type: {{ taxi_type }}</p>
-    <p>From: {{ From }}</p>
-    <p>To: {{ To }}</p>
-    <p>Customer Id: {{ customer_id }}</p>
-
+    <div class="d">
+    <form class="d-block p-2 bg-secondary text-white">
+     Taxi ID : {{ taxi_id }}<br>
+    Vehicle No: {{ registration_no }}<br>
+    Taxi Type: {{ taxi_type }}<br>
+    From: {{ From }}<br>
+    To: {{ To }}<br>
+    Customer Id: {{ customer_id }}<br>
+    </form>
+    </div>
     <form action="" method="POST" >
         {{ form.hidden_tag() }}
         <br>

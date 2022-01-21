@@ -12,13 +12,15 @@ customer home page
     </div>
 
     <div class="hi">
-        <a class="btn btn-primary btn-lg" href="{{ url_for('check_taxi',customer_id=customer_id) }}" role="button">Book Taxi</a>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('check_taxi',customer_id=customer_id,customer_name=customer_name) }}" role="button">Book Taxi Now</a>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('history_taxi',customer_id=customer_id) }}" role="button">Ride History</a>
     </div>
+
     <style>
         .hi {
             text-align: center;
             padding: 80px;
-            font-size: 100px;
+            font-size: 50px;
         }
     body {
         background: url(https://cherrytaxiservice.com/wp-content/uploads/2017/07/Taxi.jpg)no-repeat;

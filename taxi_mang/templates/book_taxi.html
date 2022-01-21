@@ -15,20 +15,18 @@ Book Taxi Page
     <!--<p>Driver Name: {{ dname }}</p>-->
     <div class="d">
     <form class="d-block p-2 bg-secondary text-white">
-     Taxi ID : {{ taxi_id }}<br>
-    Vehicle No: {{ registration_no }}<br>
-    Taxi Type: {{ taxi_type }}<br>
-    From: {{ From }}<br>
-    To: {{ To }}<br>
-    Customer Id: {{ customer_id }}<br>
+        Customer ID : {{ customer_id }}<br>
+        Customer Name : {{ customer_name }}<br>
+        Taxi ID : {{ taxi_id }}<br>
+        Vehicle No : {{ registration_no }}<br>
+        Taxi Type : {{ taxi_type }}<br>
+        From : {{ From }}<br>
+        To : {{ To }}<br>
     </form>
     </div>
     <form action="" method="POST" >
         {{ form.hidden_tag() }}
         <br>
-
-        {{ form.yname(class="form-control", placeholder="Customer Name") }}
-
 
         {{ form.Bdate(class="form-control", placeholder="Booking Date") }}
 

@@ -8,12 +8,15 @@
 <html lang="en">
 <body class>
 <div class="container">
-    <form action="" method="POST" style="color:black">
+    <form class="form-all" method="POST" style="color:black">
         {{ form.hidden_tag() }}
         <h1 class="p-3 mb-2 bg-info text-white">
             Please Enter Taxi Details
         </h1>
-
+        <h4 class="p-3 mb-2 bg-secondary text-white">
+            Driver Name : {{ driver_name}}
+        </h4>
+        <br>
         <div class="container">
         {{ form.registration_no(class="form-control", placeholder="Registration No") }}
 
@@ -31,14 +34,24 @@
 </div>
     </form>
 </div>
-        <br>
-<div class="container">
-        <form class="d-block p-2 bg-secondary text-white">
-            Driver Name : {{ driver_name}}
-        </form>
+<!--<div class="container">-->
+<!--        <form class="d-block p-2 bg-secondary text-white">-->
+<!--            Driver Name : {{ driver_name}}-->
+<!--        </form>-->
 
-</div>
+<!--</div>-->
 </body>
 </html>
+
+<style>
+    .form-all {
+        float: left;
+    }
+    body {
+
+        background: url(https://img.besthqwallpapers.com/Uploads/3-10-2019/107192/taxi-evening-taxi-cars-taxi-yellow-sign-taxi-concepts.jpg)no-repeat;
+        background-size: 1600px 900px;
+    }
+</style>
 
 {% endblock %}

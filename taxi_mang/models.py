@@ -39,7 +39,7 @@ class customer(db.Model, UserMixin):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
 
 
-class taxi(db.Model):  # relationship not done yet
+class taxi(db.Model):
     taxi_id = db.Column(db.Integer(), primary_key=True)
     taxi_type = db.Column(db.String(length=50), nullable=False)
     registration_no = db.Column(db.String(length=50), nullable=False, unique=True)
@@ -52,6 +52,16 @@ class taxi(db.Model):  # relationship not done yet
 
     def __repr__(self):  # magic method
         return f"taxi('{self.taxi_id}','{self.taxi_type}','{self.registration_no}','{self.From}','{self.To}','{self.flag},'{self.owner_owner_id}')"
+
+class taxi_log(db.Model):
+    taxi_log_id = db.Column(db.Integer(), primary_key=True)
+    registration_no = db.Column(db.String(length=50), nullable=False, unique=True)
+    From = db.Column(db.String(50), nullable=False)
+    To = db.Column(db.String(50), nullable=False)
+    action =db.Column(db.String(100), nullable=False)
+    added_time_date =db.Column(db.DateTime(100), nullable=False)
+    def __repr__(self):  # magic method
+        return f"taxi('{self.taxi_log_id}','{self.registration_no}','{self.From}','{self.To}','{self.action}','{self.added_time_date}')"
 
 
 class owner(db.Model, UserMixin):
@@ -99,7 +109,6 @@ class bookedtaxi(UserMixin, db.Model):
     taxi_type = db.Column(db.String(length=50), nullable=False)
     From = db.Column(db.String(50), index=True)
     To = db.Column(db.String(50), index=True)
-    yname = db.Column(db.String(64), index=True)
     Bdate = db.Column(db.String(64), index=True)
     Btime = db.Column(db.String(64), index=True)
     taxi_taxi_id = db.Column(db.Integer, db.ForeignKey('taxi.taxi_id'))

@@ -63,7 +63,6 @@ class addTaxiForm(FlaskForm):
 
 
 class BookTaxiForm(FlaskForm):
-    yname = StringField('Customer Name', validators=[DataRequired()])
     Bdate = StringField('Date', validators=[DataRequired()])
     Btime = StringField('Time', validators=[DataRequired()])
     submit = SubmitField('Book Taxi')

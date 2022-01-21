@@ -7,37 +7,28 @@
       <table class="table table-hover table-info">
   <thead>
             <tr>
-                <!-- Your Columns HERE -->
-                <th scope="col">BTaxi_Id</th>
-                <th scope="col">Registration No</th>
-                <th scope="col">Taxi Type</th>
                 <th scope="col">Taxi Id</th>
-                <th scope="col">Customer Id</th>
+                <th scope="col">Registration No</th>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
-                <th scope="col">Booking Date</th>
-                <th scope="col">Booking Time</th>
+                <th scope="col">action</th>
+                <th scope="col">Date and Time</th>
 
             </tr>
         </thead>
         <tbody>
-
             {% for item in items %}
                 <tr>
-                    <td>{{ item.id }}</td>
+                    <td>{{ item.taxi_log_id }}</td>
                     <td>{{ item.registration_no }}</td>
-                    <td>{{ item.taxi_type }}</td>
-                    <td>{{ item.taxi_taxi_id }}</td>
-                    <td>{{ item.customer_customer_id }}</td>
                     <td>{{ item.From }}</td>
                     <td>{{ item.To }}</td>
-                    <td>{{ item.Bdate }}</td>
-                    <td>{{ item.Btime }}</td>
+                    <td>{{ item.action }}</td>
+                    <td>{{ item.added_time_date }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-
 <style>
     body {
         background: url(https://img.besthqwallpapers.com/Uploads/3-10-2019/107192/taxi-evening-taxi-cars-taxi-yellow-sign-taxi-concepts.jpg)no-repeat;

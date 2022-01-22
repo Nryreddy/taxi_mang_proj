@@ -25,7 +25,7 @@ def owner_register_page():
         db.session.commit()
         return redirect(url_for('owner_login_page'))
 
-    if form.errors != {}:  # If there are no errors from the validations
+    if form.errors != {}:
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
     return render_template('owner_register.html', form=form)
@@ -99,7 +99,7 @@ def add_drivers_page(owner_id):
         flash(f'Successfully added driver: {form.driver_name.data}', category='success')
         return redirect(url_for('add_taxi_page', owner_id=owner_id, driver_name=driver_name))
 
-    if form.errors != {}:  # If there are errors from the validations
+    if form.errors != {}:
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
@@ -117,7 +117,7 @@ def add_taxi_page(owner_id, driver_name):
         db.session.commit()
         flash('The details of the Taxi has been added successfully!', category='success')
         return redirect(url_for('owner_home', owner_id=owner_id))
-    if form.errors != {}:  # If there are no errors from the validations
+    if form.errors != {}:
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
@@ -137,7 +137,7 @@ def customer_register_page():
         db.session.commit()
         return redirect(url_for('customer_login_page'))
 
-    if form.errors != {}:  # If there are no errors from the validations
+    if form.errors != {}:
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
@@ -190,8 +190,8 @@ def check_taxi(customer_id, customer_name):
 
 
 @app.route(
-    '/customerlogin/customer_home/check/booktaxi/<customer_id>/<customer_name>/<taxi_id>/<registration_no>/<taxi_type>/<From>/<To>',
-    methods=['GET', 'POST'])
+    '/customerlogin/customer_home/check/booktaxi/<customer_id>/<customer_name>/<taxi_id>/<registration_no>'
+    '/<taxi_type>/<From>/<To>', methods=['GET', 'POST'])
 def booktaxi(customer_id, customer_name, taxi_id, registration_no, taxi_type, From, To):
     form = BookTaxiForm()
     if form.validate_on_submit():

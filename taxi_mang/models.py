@@ -46,22 +46,24 @@ class taxi(db.Model):
     From = db.Column(db.String(50), nullable=False)
     To = db.Column(db.String(50), nullable=False)
     flag = db.Column(db.Integer)
-    driver_driver_name = db.Column(db.String(50),db.ForeignKey('driver.driver_name'))
+    driver_driver_name = db.Column(db.String(50), db.ForeignKey('driver.driver_name'))
     owner_owner_id = db.Column(db.Integer, db.ForeignKey('owner.owner_id'))
     bookedtaxiii = db.relationship('bookedtaxi', backref='taxi', lazy=True)
 
     def __repr__(self):  # magic method
         return f"taxi('{self.taxi_id}','{self.taxi_type}','{self.registration_no}','{self.From}','{self.To}','{self.flag},'{self.owner_owner_id}')"
 
+
 class taxi_log(db.Model):
     taxi_log_id = db.Column(db.Integer(), primary_key=True)
     registration_no = db.Column(db.String(length=50), nullable=False, unique=True)
     From = db.Column(db.String(50), nullable=False)
     To = db.Column(db.String(50), nullable=False)
-    action =db.Column(db.String(100), nullable=False)
-    added_time_date =db.Column(db.DateTime(100), nullable=False)
+    action = db.Column(db.String(100), nullable=False)
+    added_time_date = db.Column(db.DateTime(100), nullable=False)
+
     def __repr__(self):  # magic method
-        return f"taxi('{self.taxi_log_id}','{self.registration_no}','{self.From}','{self.To}','{self.action}','{self.added_time_date}')"
+        return f"taxi_log('{self.taxi_log_id}','{self.registration_no}','{self.From}','{self.To}','{self.action}','{self.added_time_date}')"
 
 
 class owner(db.Model, UserMixin):
@@ -91,7 +93,7 @@ class owner(db.Model, UserMixin):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
 
 
-class driver(db.Model):  # relationship not done yet
+class driver(db.Model):
     driver_id = db.Column(db.Integer(), primary_key=True)
     driver_name = db.Column(db.String(length=50), nullable=False, unique=True)
     contact_no = db.Column(db.String(length=50), nullable=False)

@@ -1,5 +1,4 @@
 from flask_wtf import FlaskForm
-from sqlalchemy import Integer
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, EqualTo, Length
 from .models import owner, customer
@@ -9,7 +8,7 @@ class RegisterForm(FlaskForm):
     def validate_username(self, username_to_check):
         ownerr = owner.query.filter_by(username=username_to_check.data).first()
         if ownerr:
-            raise ValidationError('Username already exists! Please try a different username')
+            raise ValidationError('Username already exists! Please add your  full name')
     owner_name = StringField('User Name', validators=[DataRequired()])
     contact_no = StringField(validators=[DataRequired()])
     gender = StringField(validators=[DataRequired()])
@@ -29,7 +28,7 @@ class CustomerRegisterForm(FlaskForm):
     def validate_customername(self, customername_to_check):
         customerr = customer.query.filter_by(customer_name=customername_to_check.data).first()
         if customerr:
-            raise ValidationError('Username already exists! Please try add full name')
+            raise ValidationError('Username already exists! Please add your full name')
     customer_name = StringField(validators=[DataRequired()])
     contact_no = StringField(validators=[DataRequired()])
     gender = StringField(validators=[DataRequired()])

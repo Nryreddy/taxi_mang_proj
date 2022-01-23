@@ -27,7 +27,7 @@ def owner_register_page():
 
     if form.errors != {}:
         for err_msg in form.errors.values():
-            flash(f'There was an error with creating a user: {err_msg}', category='danger')
+            flash(f'There was an error with creating a owner: {err_msg}', category='danger')
     return render_template('owner_register.html', form=form)
 
 
@@ -40,7 +40,7 @@ def owner_login_page():
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
             owner_id = attempted_user.owner_id
-            flash(f'Successfully logged in as: {attempted_user.owner_name} (id-{attempted_user.owner_id})',
+            flash(f'Successfully logged in as: {attempted_user.owner_name}  ( id-{attempted_user.owner_id} )',
                   category='success')
 
             return redirect(url_for('owner_home', owner_id=owner_id))
@@ -139,7 +139,7 @@ def customer_register_page():
 
     if form.errors != {}:
         for err_msg in form.errors.values():
-            flash(f'There was an error with creating a user: {err_msg}', category='danger')
+            flash(f'There was an error with creating a customer: {err_msg}', category='danger')
 
     return render_template('customer_register.html', form=form)
 
@@ -155,7 +155,7 @@ def customer_login_page():
             customer_id = attempted_customer.customer_id
             customer_name = attempted_customer.customer_name
             flash(
-                f'Successfully logged in as: {attempted_customer.customer_name} (id-{attempted_customer.customer_id})',
+                f'Successfully logged in as: {attempted_customer.customer_name} ( id-{attempted_customer.customer_id} )',
                 category='success')
             return redirect(url_for('customer_home', customer_id=customer_id, customer_name=customer_name))
         else:

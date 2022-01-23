@@ -9,7 +9,7 @@
     <div class="container">
         <form method="POST" class="form-register" style="color:black">
             {{ form.hidden_tag() }}
-            <h1 class="h3 mb-2 font-weight-normal">
+            <h1 class="hp-3 mb-2 bg-info text-white">
                 Please Create your Account (customer)
             </h1>
             <br>
@@ -33,7 +33,7 @@
 
             <br>
 
-            <div class="checkbox mb-3">
+            <div class="p-2 mb-3 bg-info text-white">
                <h6>Already have an account?</h6>
                <a class="btn btn-sm btn-secondary" href="{{ url_for('customer_login_page') }}">Login</a>
             </div>

@@ -1,3 +1,4 @@
+# used to map the specific URL with the associated function that is intended to perform some task.
 from taxi_mang import app, db
 from flask import render_template, redirect, flash, url_for
 from taxi_mang.models import taxi, owner, customer, driver, bookedtaxi, taxi_log

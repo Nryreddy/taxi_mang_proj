@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm      # basic element that lets users interact with our web application
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, EqualTo, Length
 from .models import owner, customer
